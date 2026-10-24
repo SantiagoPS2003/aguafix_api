@@ -16,6 +16,8 @@ export class EmailService {
 
 
   // prueba para el video.
+// segunda prueba para el video.
+
   async sendEmail(to: string, subject: string, html: string): Promise<void> {
     await this.transporter.sendMail({
       from: envs.MAIL_FROM,
