@@ -1,6 +1,6 @@
 import { CreateReportDto } from '../dtos/create-report.dto';
 
-export function generateReportTemplate(dto: CreateReportDto): string {
+export function generateReportTemplate(dto: CreateReportDto, photoUrl: string): string {
   return `
     <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
       <h2 style="color: #0284c7;">Nuevo Reporte de Fuga de Agua Registrado</h2>
@@ -23,6 +23,18 @@ export function generateReportTemplate(dto: CreateReportDto): string {
           <td style="padding: 10px; border: 1px solid #cbd5e1;">${dto.reporterPhone}</td>
         </tr>
       </table>
+
+      ${
+        photoUrl
+          ? `
+        <div style="margin-top: 20px;">
+          <p style="font-weight: bold; color: #0284c7;">Evidencia Fotográfica:</p>
+          <img src="${photoUrl}" alt="Foto de la Fuga" style="max-width: 400px; width: 100%; border-radius: 8px; border: 1px solid #cbd5e1;" />
+        </div>
+      `
+          : ''
+      }
+
       <p style="margin-top: 20px; font-size: 12px; color: #64748b;">Este es un mensaje automático generado por AguaFix API.</p>
     </div>
   `;

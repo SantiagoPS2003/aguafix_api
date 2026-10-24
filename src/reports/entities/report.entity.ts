@@ -17,6 +17,9 @@ export class Report {
   @Column({ type: 'varchar', length: 50 })
   reporterPhone!: string;
 
+  @Column({ type: 'varchar', length: 500, name: 'photo_url' }) // <-- Agregamos esta línea
+  photoUrl!: string;
+  
   @Column({ type: 'boolean', default: false })
   isResolved!: boolean;
 

@@ -6,6 +6,7 @@ import { envs } from './config/env';
 import { ReportsModule } from './reports/reports.module';
 import { EmailModule } from './email/email.module';
 import { AuthModule } from './auth/auth.module';
+import { StorageModule } from './storage/storage.module'; 
 
 @Module({
   imports: [
@@ -17,12 +18,13 @@ import { AuthModule } from './auth/auth.module';
       password: envs.DATABASE_PASSWORD,
       database: envs.DATABASE_NAME,
       autoLoadEntities: true,
-      synchronize: false,
+      synchronize: true,
       logging: true,
     }),
     ReportsModule,
     EmailModule,
     AuthModule,
+    StorageModule, // <-- 2. Agrégalo aquí
   ],
   controllers: [AppController],
   providers: [AppService],
